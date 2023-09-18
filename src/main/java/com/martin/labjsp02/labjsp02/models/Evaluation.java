@@ -1,5 +1,6 @@
 package com.martin.labjsp02.labjsp02.models;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class Evaluation {
@@ -107,15 +108,20 @@ public class Evaluation {
     // Méthode Mapper pour convertir en EvaluationViewModel
     public EvaluationViewModel Mapper() {
         EvaluationViewModel evaluationViewModel = new EvaluationViewModel();
+
         evaluationViewModel.setNumero(this.numero);
         evaluationViewModel.setNom(this.nom);
         evaluationViewModel.setPrenom(this.prenom);
         evaluationViewModel.setTelephone(this.telephone);
-        evaluationViewModel.setEmail(this.email);
+        evaluationViewModel.setCourriel(this.courriel);
         evaluationViewModel.setSexe(this.sexe);
         evaluationViewModel.setNote(this.note);
-        evaluationViewModel.setDateEvaluation(this.dateEvaluation.getTime()); // Convertir Calendar en Date
+        // Conversion de Calendar à String pour dateEvaluation
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        evaluationViewModel.setDateEvaluation(sdf.format(this.dateEvaluation.getTime()));
+
         evaluationViewModel.setCommentaire(this.commentaire);
+
         return evaluationViewModel;
     }
 }

@@ -120,7 +120,8 @@ public class EvaluationViewModel {
         }
         return calendar;
     }
-    public Evaluation Mapper(HttpServletRequest request) {
+
+    public Evaluation Mapper() {
         Evaluation evaluation = new Evaluation();
         evaluation.setNumero(this.numero);
         evaluation.setNom(this.nom);
@@ -129,7 +130,7 @@ public class EvaluationViewModel {
         evaluation.setCourriel(this.courriel);
         evaluation.setSexe(this.sexe);
         // Vous devez convertir la date ici à partir d'une chaîne
-        evaluation.setDateEvaluation(convertirDate(this.dateEvaluation)); // Assurez-vous d'implémenter la méthode convertirDate
+        evaluation.setDateEvaluation(convertirDate(this.dateEvaluation));
         evaluation.setCommentaire(this.commentaire);
         return evaluation;
     }
