@@ -110,16 +110,23 @@ public class EvaluationViewModel {
 
     // Méthode pour convertir une chaîne de caractères en Calendar
     private Calendar convertirDate(String dateStr) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); // Remplacez le format par celui de vos dates
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Calendar calendar = Calendar.getInstance();
+
+        if(dateStr == null || dateStr.trim().isEmpty()) {
+            return calendar; // Retourne la date courante si dateStr est null ou vide
+        }
+
         try {
             Date date = dateFormat.parse(dateStr);
             calendar.setTime(date);
         } catch (ParseException e) {
             e.printStackTrace(); // Gérer l'exception en cas d'erreur de conversion
         }
+
         return calendar;
     }
+
 
     public Evaluation Mapper() {
         Evaluation evaluation = new Evaluation();
@@ -128,9 +135,10 @@ public class EvaluationViewModel {
         evaluation.setPrenom(this.prenom);
         evaluation.setTelephone(this.telephone);
         evaluation.setCourriel(this.courriel);
-        evaluation.setSexe(this.sexe);
         // Vous devez convertir la date ici à partir d'une chaîne
         evaluation.setDateEvaluation(convertirDate(this.dateEvaluation));
+        evaluation.setSexe(this.sexe);
+       evaluation.setNote (this.note);
         evaluation.setCommentaire(this.commentaire);
         return evaluation;
     }

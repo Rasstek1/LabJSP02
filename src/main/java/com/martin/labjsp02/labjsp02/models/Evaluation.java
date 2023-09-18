@@ -117,8 +117,11 @@ public class Evaluation {
         evaluationViewModel.setSexe(this.sexe);
         evaluationViewModel.setNote(this.note);
         // Conversion de Calendar à String pour dateEvaluation
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        evaluationViewModel.setDateEvaluation(sdf.format(this.dateEvaluation.getTime()));
+        if(this.dateEvaluation != null) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            evaluationViewModel.setDateEvaluation(sdf.format(this.dateEvaluation.getTime()));
+        }
+
 
         evaluationViewModel.setCommentaire(this.commentaire);
 
