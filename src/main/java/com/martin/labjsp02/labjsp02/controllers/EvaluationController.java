@@ -3,10 +3,15 @@ package com.martin.labjsp02.labjsp02.controllers;
 import com.martin.labjsp02.labjsp02.models.Evaluation;
 import com.martin.labjsp02.labjsp02.models.EvaluationDataContext;
 import com.martin.labjsp02.labjsp02.models.EvaluationViewModel;
+import com.martin.labjsp02.labjsp02.service.FileStorageService;
+import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -15,6 +20,8 @@ public class EvaluationController {
 
     @Autowired
     private EvaluationDataContext evaluationDataContext;
+    @Autowired
+    private FileStorageService fileStorageService;
 
     @GetMapping("/liste")
     public String liste(Model model) {
@@ -38,6 +45,7 @@ public class EvaluationController {
         return "redirect:/Evaluation/liste";
     }
 
+
     @GetMapping("/supprimer/{numero}")
     public String supprimer(@PathVariable int numero) {
         evaluationDataContext.Supprimer(numero);
@@ -59,4 +67,9 @@ public class EvaluationController {
         evaluationDataContext.Modifier(eval);
         return "redirect:/Evaluation/liste";
     }
+
+
+
+
+
 }

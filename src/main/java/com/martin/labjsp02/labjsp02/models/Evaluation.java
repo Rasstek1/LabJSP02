@@ -16,6 +16,8 @@ public class Evaluation {
 
     private String commentaire;
 
+
+
     public Evaluation() {
     }
 
@@ -29,6 +31,7 @@ public class Evaluation {
         this.note = note;
         this.dateEvaluation = dateEvaluation;
         this.commentaire = commentaire;
+
     }
 
 
@@ -105,6 +108,9 @@ public class Evaluation {
         this.commentaire=commentaire;
     }
 
+
+
+
     // Méthode Mapper pour convertir en EvaluationViewModel
     public EvaluationViewModel Mapper() {
         EvaluationViewModel evaluationViewModel = new EvaluationViewModel();
@@ -116,15 +122,20 @@ public class Evaluation {
         evaluationViewModel.setCourriel(this.courriel);
         evaluationViewModel.setSexe(this.sexe);
         evaluationViewModel.setNote(this.note);
+        evaluationViewModel.setCommentaire(this.commentaire);
+
         // Conversion de Calendar à String pour dateEvaluation
         if(this.dateEvaluation != null) {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             evaluationViewModel.setDateEvaluation(sdf.format(this.dateEvaluation.getTime()));
+
         }
 
 
-        evaluationViewModel.setCommentaire(this.commentaire);
+
 
         return evaluationViewModel;
     }
+
+
 }

@@ -20,6 +20,8 @@ public class EvaluationViewModel {
     private String dateEvaluation;
     private String commentaire;
 
+
+
     public EvaluationViewModel() {
     }
 
@@ -33,6 +35,7 @@ public class EvaluationViewModel {
         this.note = note;
         this.dateEvaluation = dateEvaluation;
         this.commentaire = commentaire;
+
     }
 
     public int getNumero() {
@@ -108,13 +111,15 @@ public class EvaluationViewModel {
         this.commentaire=commentaire;
     }
 
+
+
     // Méthode pour convertir une chaîne de caractères en Calendar
     private Calendar convertirDate(String dateStr) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Calendar calendar = Calendar.getInstance();
 
         if(dateStr == null || dateStr.trim().isEmpty()) {
-            return calendar; // Retourne la date courante si dateStr est null ou vide
+            return null; // Retourne null si dateStr est null ou vide
         }
 
         try {
@@ -127,6 +132,19 @@ public class EvaluationViewModel {
         return calendar;
     }
 
+    public Date getDateEvaluationAsDate() {
+        if (this.dateEvaluation != null && !this.dateEvaluation.trim().isEmpty()) {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                return dateFormat.parse(this.dateEvaluation);
+            } catch (ParseException e) {
+                e.printStackTrace(); // Gérer l'exception en cas d'erreur de conversion
+            }
+        }
+        return null;
+    }
+
+
 
     public Evaluation Mapper() {
         Evaluation evaluation = new Evaluation();
@@ -135,13 +153,16 @@ public class EvaluationViewModel {
         evaluation.setPrenom(this.prenom);
         evaluation.setTelephone(this.telephone);
         evaluation.setCourriel(this.courriel);
+        evaluation.setSexe(this.sexe);
+        evaluation.setNote (this.note);
+        evaluation.setCommentaire(this.commentaire);
+
         // Vous devez convertir la date ici à partir d'une chaîne
         evaluation.setDateEvaluation(convertirDate(this.dateEvaluation));
-        evaluation.setSexe(this.sexe);
-       evaluation.setNote (this.note);
-        evaluation.setCommentaire(this.commentaire);
+
         return evaluation;
     }
+
 
 
 }

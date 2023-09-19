@@ -21,15 +21,19 @@ public class EvaluationDataContext implements IEvaluationContext {
             viewModel.setCourriel(evaluation.getCourriel());
             viewModel.setSexe(evaluation.getSexe());
             viewModel.setNote(evaluation.getNote());
+            viewModel.setCommentaire(evaluation.getCommentaire());
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            viewModel.setDateEvaluation(sdf.format(evaluation.getDateEvaluation().getTime()));
-
-
+            if(evaluation.getDateEvaluation() != null) {
+                viewModel.setDateEvaluation(sdf.format(evaluation.getDateEvaluation().getTime()));
+            }
             evaluationViewModels.add(viewModel);
         }
 
         return evaluationViewModels;
     }
+
+
+
     public Evaluation rechercher(int numero) {
         for (Evaluation evaluation : listeEvaluations) {
             if (evaluation.getNumero() == numero) {
