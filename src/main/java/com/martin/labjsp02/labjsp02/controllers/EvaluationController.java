@@ -51,9 +51,9 @@ public class EvaluationController {
     }
 
     @RequestMapping(value = "/modifier/{numero}", method = RequestMethod.GET)
-    public String modifier(@PathVariable int numero, Model model) {
+    public String modifier(@PathVariable int numero, Model model, HttpServletRequest request) {
         Evaluation eval = evaluationDataContext.rechercher(numero);
-        EvaluationViewModel viewModel = eval.Mapper();
+        EvaluationViewModel viewModel = eval.Mapper(request);
         model.addAttribute("evaluation", viewModel);
         model.addAttribute("pageContent", "modifier");
         return "layout";

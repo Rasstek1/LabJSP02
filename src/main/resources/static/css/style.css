@@ -13,6 +13,11 @@ header {
     box-shadow: none;
 }
 
+/* Ajouter un effet de flou à une boîte */
+.boite-blurry {
+    backdrop-filter: blur(10px); /* Ajustez la valeur selon l'effet désiré */
+    /*background-color: rgba(255, 255, 255, 0.5); /* Ajustez les valeurs RGBA pour obtenir l'effet désiré */
+}
 
 .navbar {
     background: transparent;
@@ -97,11 +102,6 @@ footer {
     height: auto;  /* Maintient le ratio d'aspect */
 }
 
-/* Ajouter un effet de flou à une boîte */
-.boite-blurry {
-    backdrop-filter: blur(10px); /* Ajustez la valeur selon l'effet désiré */
-    /*background-color: rgba(255, 255, 255, 0.5); /* Ajustez les valeurs RGBA pour obtenir l'effet désiré */
-}
 
 
 /*animation slide de droite à gauche pour la transition des pages*/

@@ -26,8 +26,8 @@
                 <input type="email" class="form-control" id="courriel" name="courriel" required>
             </div>
             <div class="mb-3">
-                <label for="date" class="form-label">Date d’évaluation</label>
-                <input type="date" class="form-control" id="date" name="date" >
+                <label for="dateEvaluation" class="form-label">Date d’évaluation</label>
+                <input type="date" class="form-control" id="dateEvaluation" name="dateEvaluation" >
             </div>
             <div class="mb-3">
                 <label class="form-label">Sexe</label>

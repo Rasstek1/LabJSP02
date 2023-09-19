@@ -12,7 +12,13 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
     <script src="${pageContext.request.contextPath}/js/script.js"></script>
 
-
+<style>
+    /* Ajouter un effet de flou à une boîte */
+    .boite-blurry {
+        backdrop-filter: blur(10px); /* Ajustez la valeur selon l'effet désiré */
+        /*background-color: rgba(255, 255, 255, 0.5); /* Ajustez les valeurs RGBA pour obtenir l'effet désiré */
+    }
+</style>
 </head>
 <body>
 

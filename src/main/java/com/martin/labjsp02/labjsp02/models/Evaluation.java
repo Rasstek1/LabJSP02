@@ -1,7 +1,10 @@
 package com.martin.labjsp02.labjsp02.models;
+import jakarta.servlet.http.HttpServletRequest;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class Evaluation {
     private int numero;
@@ -104,23 +107,31 @@ public class Evaluation {
 
 
     public Calendar getDateEvaluation() {
-        return this.dateEvaluation;
+        return dateEvaluation;
     }
 
     public void setDateEvaluation(Calendar dateEvaluation) {
-        this.dateEvaluation=dateEvaluation;
+        this.dateEvaluation = dateEvaluation;
     }
-    public String convertirDate(Calendar dateEvaluation) {
-        if (dateEvaluation != null) {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            return sdf.format(dateEvaluation.getTime());
-        } else {
-            return "Ya pas de date man!"; //
+    private static Date convertDate(String strDate) {
+        if (strDate == null) {
+
+            return null;
         }
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        try {
+            java.util.Date parseDate = dateFormat.parse(strDate);
+            return  parseDate;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     // Méthode Mapper pour convertir en EvaluationViewModel pour l'affichage
-    public EvaluationViewModel Mapper() {
+    public EvaluationViewModel Mapper(HttpServletRequest request) {
         EvaluationViewModel evaluationViewModel = new EvaluationViewModel();
 
         evaluationViewModel.setNumero(this.numero);
@@ -131,7 +142,12 @@ public class Evaluation {
         evaluationViewModel.setSexe(this.sexe);
         evaluationViewModel.setNote(this.note);
         evaluationViewModel.setCommentaire(this.commentaire);
-        evaluationViewModel.setDateEvaluation(this.convertirDate(dateEvaluation));
+        String strDateEvaluation = request.getParameter("dateEvaluation");
+
+        Date dateEvaluation = Evaluation.convertDate(strDateEvaluation); //Apres plusieurs facons de faire, je n'ai pas reussi a faire fonctionner la methode convertDate
+
+        Calendar dateEvaluation2 = Calendar.getInstance();
+        dateEvaluation2.setTime(dateEvaluation);
 
         return evaluationViewModel;
     }
