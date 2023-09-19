@@ -22,7 +22,7 @@ public class EvaluationDataContext implements IEvaluationContext {
             viewModel.setSexe(evaluation.getSexe());
             viewModel.setNote(evaluation.getNote());
             viewModel.setCommentaire(evaluation.getCommentaire());
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             if(evaluation.getDateEvaluation() != null) {
                 viewModel.setDateEvaluation(sdf.format(evaluation.getDateEvaluation().getTime()));
             }

@@ -4,6 +4,7 @@
 <div class="container">
     <h3>Modifier une évaluation</h3>
     <div class="col-12 col-md-6 col-lg-4 mx-auto border border-white p-4 boite-blurry">
+
         <form action="${pageContext.request.contextPath}/Evaluation/modifier" method="POST">
             <input type="hidden" name="numero" value="${evaluation.numero}" />
             <div class="mb-3">
@@ -40,7 +41,7 @@
             <div class="mb-3">
                 <label for="note" class="form-label">Note</label>
                 <select class="form-select" id="note" name="note">
-                    <!-- Mettez ici les conditions pour sélectionner l'option actuelle -->
+
                     <option value="tres_bien" ${evaluation.note == 'tres_bien' ? 'selected' : ''}>Très bien</option>
                     <option value="bien" ${evaluation.note == 'bien' ? 'selected' : ''}>Bien</option>
                     <option value="moyen" ${evaluation.note == 'moyen' ? 'selected' : ''}>Moyen</option>

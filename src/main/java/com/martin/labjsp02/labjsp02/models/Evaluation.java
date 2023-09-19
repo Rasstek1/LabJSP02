@@ -126,7 +126,7 @@ public class Evaluation {
 
         // Conversion de Calendar à String pour dateEvaluation
         if(this.dateEvaluation != null) {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             evaluationViewModel.setDateEvaluation(sdf.format(this.dateEvaluation.getTime()));
 
         }

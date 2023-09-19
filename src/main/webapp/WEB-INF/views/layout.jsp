@@ -10,6 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+    <script src="${pageContext.request.contextPath}/js/script.js"></script>
 
 
 </head>
@@ -54,9 +55,13 @@
 
 
 <!-- Corps de la page -->
+<div class="content">
 <div class="container">
     <jsp:include page="${pageContent}.jsp"/>
 </div>
+</div>
+
+
 
 <!-- Pied de page -->
 <footer class="text-center ">

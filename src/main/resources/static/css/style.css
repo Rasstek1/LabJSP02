@@ -4,6 +4,7 @@ body {
     background-repeat: no-repeat; /* Pour éviter la répétition de l'image */
     background-attachment: fixed; /* Pour que l'arrière-plan reste fixe lors du défilement */
     padding-bottom:80px;
+
 }
 
 header {
@@ -33,7 +34,7 @@ h2{
 
 h3{
     text-align: center;
-    color:white;
+    color:darkgray;
 }
 .form-label, form-check-label, td, tr, p{
     color:white;
@@ -96,10 +97,32 @@ footer {
     height: auto;  /* Maintient le ratio d'aspect */
 }
 
+/* Ajouter un effet de flou à une boîte */
 .boite-blurry {
     backdrop-filter: blur(10px); /* Ajustez la valeur selon l'effet désiré */
     /*background-color: rgba(255, 255, 255, 0.5); /* Ajustez les valeurs RGBA pour obtenir l'effet désiré */
 }
 
+
+/*animation slide de droite à gauche pour la transition des pages*/
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+        background-image: linear-gradient(to left, yellow, transparent);
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+        background-color: transparent;
+    }
+}
+
+
+.content {
+    animation: slideInFromRight 1s forwards;
+    transition: all 0.5s;
+
+}
 
 

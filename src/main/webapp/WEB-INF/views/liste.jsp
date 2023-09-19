@@ -26,10 +26,6 @@
                     <div class="col">
                         <div class="boite-blurry">
                             <img src="${pageContext.request.contextPath}/img/${eval.sexe.toString() == 'm' ? 'men.png' : 'girl.png'}" alt="Photo du profil" class="logo-img"/>
-
-
-
-
                             <div class="card-body">
                                 <h4 class="card-title">${eval.prenom} ${eval.nom}</h4>
                                 <p class="card-text">
@@ -41,8 +37,8 @@
                                     <strong>Commentaire :</strong> ${eval.commentaire} <br>
                                     <strong>Date d'évaluation :</strong>
                                     <c:choose>
-                                        <c:when test="${eval.dateEvaluationAsDate != null}">
-                                            <fmt:formatDate value="${eval.dateEvaluationAsDate}" pattern="yyyy-MM-dd" />
+                                        <c:when test="${not empty eval.dateEvaluation}">
+                                            ${eval.dateEvaluation}
                                         </c:when>
                                         <c:otherwise>
                                             Non spécifié
@@ -75,3 +71,15 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
+
+<!--c:choose: C'est utilisé pour réaliser un choix entre plusieurs blocs de code. Il fonctionne en collaboration avec c:when et c:otherwise -->
+<!--c:when: Définissez une condition qui, si elle est vraie, exécute le bloc de code à l'intérieur de la balise c:when. Il est utilisé à l'intérieur d'un bloc c:choose.-->
+<!--c:otherwise: Définissez un bloc de code qui sera exécuté si aucune des conditions c:when à l'intérieur du c:choose n'est vraie-->
+<!--c: forEach permet de faire des boucles-->
+<!--c: if permet de faire des conditions-->
+<!--c: url permet de faire des liens-->
+
+<!--fmt: formatDate permet de formater la date-->
+
+
