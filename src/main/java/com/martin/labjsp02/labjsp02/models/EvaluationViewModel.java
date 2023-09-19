@@ -95,13 +95,7 @@ public class EvaluationViewModel {
         this.note=note;
     }
 
-    public String getDateEvaluation() {
-        return dateEvaluation;
-    }
 
-    public void setDateEvaluation(String dateEvaluation) {
-        this.dateEvaluation=dateEvaluation;
-    }
 
     public String getCommentaire() {
         return commentaire;
@@ -112,27 +106,33 @@ public class EvaluationViewModel {
     }
 
 
+    public String getDateEvaluation() {
+        return dateEvaluation;
+    }
 
-    // Méthode pour convertir une chaîne de caractères en Calendar
-    private Calendar convertirDate(String dateStr) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        Calendar calendar = Calendar.getInstance();
+    public void setDateEvaluation(String dateEvaluation) {
+        this.dateEvaluation=dateEvaluation;
+    }
 
-        if(dateStr == null || dateStr.trim().isEmpty()) {
-            return null; // Retourne null si dateStr est null ou vide
-        }
+    public Calendar convertDateEvaluationToCalendar() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
         try {
-            Date date = dateFormat.parse(dateStr);
-            calendar.setTime(date);
+            Date parsedDate = sdf.parse(dateEvaluation);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(parsedDate);
+            return calendar;
         } catch (ParseException e) {
-            e.printStackTrace(); // Gérer l'exception en cas d'erreur de conversion
+            // Gérer l'exception si la chaîne de caractères n'est pas au bon format
+            e.printStackTrace();
+            // Vous pouvez lancer une exception personnalisée ou effectuer une autre action appropriée ici
+            return null; // Ou retournez null en cas d'erreur
         }
-
-        return calendar;
     }
 
 
+
+//mapper configurer pour convertir en Evaluation (model)
     public Evaluation Mapper() {
         Evaluation evaluation = new Evaluation();
         evaluation.setNumero(this.numero);
@@ -144,8 +144,7 @@ public class EvaluationViewModel {
         evaluation.setNote (this.note);
         evaluation.setCommentaire(this.commentaire);
 
-
-        evaluation.setDateEvaluation(convertirDate(this.dateEvaluation));
+        evaluation.setDateEvaluation(this.convertDateEvaluationToCalendar());
 
         return evaluation;
     }

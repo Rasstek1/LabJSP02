@@ -92,13 +92,7 @@ public class Evaluation {
         this.note=note;
     }
 
-    public Calendar getDateEvaluation() {
-        return dateEvaluation;
-    }
 
-    public void setDateEvaluation(Calendar dateEvaluation) {
-        this.dateEvaluation=dateEvaluation;
-    }
 
     public String getCommentaire() {
         return commentaire;
@@ -109,9 +103,23 @@ public class Evaluation {
     }
 
 
+    public Calendar getDateEvaluation() {
+        return this.dateEvaluation;
+    }
 
+    public void setDateEvaluation(Calendar dateEvaluation) {
+        this.dateEvaluation=dateEvaluation;
+    }
+    public String convertirDate(Calendar dateEvaluation) {
+        if (dateEvaluation != null) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            return sdf.format(dateEvaluation.getTime());
+        } else {
+            return "Ya pas de date man!"; //
+        }
+    }
 
-    // Méthode Mapper pour convertir en EvaluationViewModel
+    // Méthode Mapper pour convertir en EvaluationViewModel pour l'affichage
     public EvaluationViewModel Mapper() {
         EvaluationViewModel evaluationViewModel = new EvaluationViewModel();
 
@@ -123,19 +131,17 @@ public class Evaluation {
         evaluationViewModel.setSexe(this.sexe);
         evaluationViewModel.setNote(this.note);
         evaluationViewModel.setCommentaire(this.commentaire);
-
-        // Conversion de Calendar à String pour dateEvaluation
-        if(this.dateEvaluation != null) {
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            evaluationViewModel.setDateEvaluation(sdf.format(this.dateEvaluation.getTime()));
-
-        }
-
-
-
+        evaluationViewModel.setDateEvaluation(this.convertirDate(dateEvaluation));
 
         return evaluationViewModel;
     }
 
-
 }
+
+
+
+
+
+
+
+

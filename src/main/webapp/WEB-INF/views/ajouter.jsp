@@ -7,27 +7,27 @@
         <form action="${pageContext.request.contextPath}/Evaluation/ajouter" method="POST">
             <div class="mb-3">
                 <label for="numero" class="form-label">Numéro</label>
-                <input type="text" class="form-control" id="numero" name="numero">
+                <input type="text" class="form-control" id="numero" name="numero"required>
             </div>
             <div class="mb-3">
                 <label for="nom" class="form-label">Nom</label>
-                <input type="text" class="form-control" id="nom" name="nom">
+                <input type="text" class="form-control" id="nom" name="nom" required>
             </div>
             <div class="mb-3">
                 <label for="prenom" class="form-label">Prénom</label>
-                <input type="text" class="form-control" id="prenom" name="prenom">
+                <input type="text" class="form-control" id="prenom" name="prenom"required>
             </div>
             <div class="mb-3">
                 <label for="telephone" class="form-label">Téléphone</label>
-                <input type="text" class="form-control" id="telephone" name="telephone">
+                <input type="text" class="form-control" id="telephone" name="telephone" required>
             </div>
             <div class="mb-3">
                 <label for="courriel" class="form-label">Courriel</label>
-                <input type="email" class="form-control" id="courriel" name="courriel">
+                <input type="email" class="form-control" id="courriel" name="courriel" required>
             </div>
             <div class="mb-3">
                 <label for="date" class="form-label">Date d’évaluation</label>
-                <input type="date" class="form-control" id="date" name="date">
+                <input type="date" class="form-control" id="date" name="date" >
             </div>
             <div class="mb-3">
                 <label class="form-label">Sexe</label>
@@ -53,7 +53,7 @@
             </div>
             <div class="mb-3">
                 <label for="commentaire" class="form-label">Commentaires</label>
-                <textarea class="form-control" id="commentaire" name="commentaire"></textarea>
+                <textarea class="form-control" id="commentaire" name="commentaire" required></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Envoyer</button>
             <button type="reset" class="btn btn-secondary">Annuler</button>
