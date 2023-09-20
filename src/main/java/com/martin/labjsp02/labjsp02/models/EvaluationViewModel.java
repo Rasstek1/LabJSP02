@@ -21,7 +21,6 @@ public class EvaluationViewModel {
     private String commentaire;
 
 
-
     public EvaluationViewModel() {
     }
 
@@ -51,7 +50,7 @@ public class EvaluationViewModel {
     }
 
     public void setNom(String nom) {
-        this.nom=nom;
+        this.nom = nom;
     }
 
     public String getPrenom() {
@@ -59,7 +58,7 @@ public class EvaluationViewModel {
     }
 
     public void setPrenom(String prenom) {
-        this.prenom=prenom;
+        this.prenom = prenom;
     }
 
     public String getTelephone() {
@@ -67,7 +66,7 @@ public class EvaluationViewModel {
     }
 
     public void setTelephone(String telephone) {
-        this.telephone=telephone;
+        this.telephone = telephone;
     }
 
     public String getCourriel() {
@@ -75,7 +74,7 @@ public class EvaluationViewModel {
     }
 
     public void setCourriel(String courriel) {
-        this.courriel=courriel;
+        this.courriel = courriel;
     }
 
 
@@ -92,9 +91,8 @@ public class EvaluationViewModel {
     }
 
     public void setNote(String note) {
-        this.note=note;
+        this.note = note;
     }
-
 
 
     public String getCommentaire() {
@@ -102,7 +100,7 @@ public class EvaluationViewModel {
     }
 
     public void setCommentaire(String commentaire) {
-        this.commentaire=commentaire;
+        this.commentaire = commentaire;
     }
 
 
@@ -111,44 +109,38 @@ public class EvaluationViewModel {
     }
 
     public void setDateEvaluation(String dateEvaluation) {
-        this.dateEvaluation=dateEvaluation;
+        this.dateEvaluation = dateEvaluation;
     }
 
-    public Calendar convertDateEvaluationToCalendar() {
+    public Calendar convertStringToCalendar() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
         try {
             Date parsedDate = sdf.parse(dateEvaluation);
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(parsedDate);
             return calendar;
         } catch (ParseException e) {
-            // Gérer l'exception si la chaîne de caractères n'est pas au bon format
             e.printStackTrace();
-            // Vous pouvez lancer une exception personnalisée ou effectuer une autre action appropriée ici
-            return null; // Ou retournez null en cas d'erreur
         }
+          return null;
     }
-
-
 
 //mapper configurer pour convertir en Evaluation (model)
-    public Evaluation Mapper() {
-        Evaluation evaluation = new Evaluation();
-        evaluation.setNumero(this.numero);
-        evaluation.setNom(this.nom);
-        evaluation.setPrenom(this.prenom);
-        evaluation.setTelephone(this.telephone);
-        evaluation.setCourriel(this.courriel);
-        evaluation.setSexe(this.sexe);
-        evaluation.setNote (this.note);
-        evaluation.setCommentaire(this.commentaire);
+        public Evaluation Mapper () {
+            Evaluation evaluation = new Evaluation();
+            evaluation.setNumero(this.numero);
+            evaluation.setNom(this.nom);
+            evaluation.setPrenom(this.prenom);
+            evaluation.setTelephone(this.telephone);
+            evaluation.setCourriel(this.courriel);
+            evaluation.setSexe(this.sexe);
+            evaluation.setNote(this.note);
+            evaluation.setCommentaire(this.commentaire);
 
-        evaluation.setDateEvaluation(this.convertDateEvaluationToCalendar());
+            evaluation.setDateEvaluation(this.convertStringToCalendar());
 
-        return evaluation;
+            return evaluation;
+        }
+
+
     }
-
-
-
-}

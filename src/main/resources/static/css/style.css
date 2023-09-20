@@ -52,15 +52,15 @@ header {
     color:white;
 }
 h1, h4{
-    color: #fcc33d;
+    color: #facc01;
 }
 h2{
-    color:darkgray;
+    color:#facc01;
 }
 
 h3{
     text-align: center;
-    color:darkgray;
+    color:#facc01;
 }
 .form-label, form-check-label, td, tr, p{
     color:white;
@@ -75,7 +75,7 @@ th{
 }
 
 .navbar-nav .nav-link:hover {
-    color: #fcc33d; /* Changer la couleur au survol */
+    color: #facc01; /* Changer la couleur au survol */
 }
 
 

@@ -1,4 +1,5 @@
 package com.martin.labjsp02.labjsp02.models;
+
 import jakarta.servlet.http.HttpServletRequest;
 
 import java.text.ParseException;
@@ -20,7 +21,6 @@ public class Evaluation {
     private String commentaire;
 
 
-
     public Evaluation() {
     }
 
@@ -38,7 +38,6 @@ public class Evaluation {
     }
 
 
-
     public int getNumero() {
         return numero;
     }
@@ -52,7 +51,7 @@ public class Evaluation {
     }
 
     public void setNom(String nom) {
-        this.nom=nom;
+        this.nom = nom;
     }
 
     public String getPrenom() {
@@ -60,7 +59,7 @@ public class Evaluation {
     }
 
     public void setPrenom(String prenom) {
-        this.prenom=prenom;
+        this.prenom = prenom;
     }
 
     public String getTelephone() {
@@ -68,7 +67,7 @@ public class Evaluation {
     }
 
     public void setTelephone(String telephone) {
-        this.telephone=telephone;
+        this.telephone = telephone;
     }
 
     public String getCourriel() {
@@ -76,7 +75,7 @@ public class Evaluation {
     }
 
     public void setCourriel(String courriel) {
-        this.courriel=courriel;
+        this.courriel = courriel;
     }
 
     public char getSexe() {
@@ -84,17 +83,16 @@ public class Evaluation {
     }
 
     public void setSexe(char sexe) {
-        this.sexe=sexe;
+        this.sexe = sexe;
     }
 
     public String getNote() {
         return note;
     }
 
-    public void setNote (String note) {
-        this.note=note;
+    public void setNote(String note) {
+        this.note = note;
     }
-
 
 
     public String getCommentaire() {
@@ -102,7 +100,7 @@ public class Evaluation {
     }
 
     public void setCommentaire(String commentaire) {
-        this.commentaire=commentaire;
+        this.commentaire = commentaire;
     }
 
 
@@ -113,21 +111,15 @@ public class Evaluation {
     public void setDateEvaluation(Calendar dateEvaluation) {
         this.dateEvaluation = dateEvaluation;
     }
-    private static Date convertDate(String strDate) {
-        if (strDate == null) {
 
+    private String convertCalendarToString(Calendar calendar) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        if (calendar != null) {
+            return sdf.format(calendar.getTime());
+        } else {
             return null;
         }
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-
-        try {
-            java.util.Date parseDate = dateFormat.parse(strDate);
-            return  parseDate;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
     // Méthode Mapper pour convertir en EvaluationViewModel pour l'affichage
@@ -142,12 +134,8 @@ public class Evaluation {
         evaluationViewModel.setSexe(this.sexe);
         evaluationViewModel.setNote(this.note);
         evaluationViewModel.setCommentaire(this.commentaire);
-        String strDateEvaluation = request.getParameter("dateEvaluation");
+        evaluationViewModel.setDateEvaluation(this.convertCalendarToString(this.dateEvaluation));
 
-        Date dateEvaluation = Evaluation.convertDate(strDateEvaluation);
-
-        Calendar dateEvaluation2 = Calendar.getInstance();
-        dateEvaluation2.setTime(dateEvaluation);
 
         return evaluationViewModel;
     }
