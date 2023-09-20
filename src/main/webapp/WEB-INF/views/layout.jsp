@@ -21,7 +21,12 @@
 </style>
 </head>
 <body>
-
+<div class="video-background">
+    <video playsinline autoplay muted loop>
+        <source src="${pageContext.request.contextPath}/video/abstract.mp4" type="video/mp4">
+        <!-- remplacez "../path/to/your/video.mp4" par le chemin réel vers votre fichier vidéo -->
+    </video>
+</div>
 <header>
     <!-- Barre de navigation -->
     <nav class="navbar navbar-expand-lg">

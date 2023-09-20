@@ -15,7 +15,6 @@ public class AccueilController {
     @GetMapping("/accueil")
     public String accueil(Model model) {//L'objet Model est utilisé pour passer des attributs (data) de la méthode du contrôleur à la vue (JSP)
         model.addAttribute("pageContent", "accueil");// Signifie que dans le fichier JSP, on pourra accéder à cet attribut avec ${pageContent} et cela affichera la chaîne "accueil"
-       /* int a = 20/0; // Pour tester la page d'erreur*/
         return "layout";
     }
 

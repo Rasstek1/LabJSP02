@@ -49,8 +49,8 @@
                 </select>
             </div>
             <div class="mb-3">
-                <label for="date" class="form-label">Date d’évaluation</label>
-                <input type="date" class="form-control" id="date" name="dateEvaluation" value="${evaluation.dateEvaluation}">
+                <label for="dateEvaluation" class="form-label">Date d’évaluation</label>
+                <input type="date" class="form-control" id="dateEvaluation" name="dateEvaluation" >
             </div>
             <div class="mb-3">
                 <label for="commentaire" class="form-label">Commentaires</label>

@@ -4,15 +4,12 @@ import com.martin.labjsp02.labjsp02.models.Evaluation;
 import com.martin.labjsp02.labjsp02.models.EvaluationDataContext;
 import com.martin.labjsp02.labjsp02.models.EvaluationViewModel;
 import com.martin.labjsp02.labjsp02.service.FileStorageService;
-import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
+
 
 @Controller
 @RequestMapping("/Evaluation")
@@ -58,6 +55,7 @@ public class EvaluationController {
         model.addAttribute("pageContent", "modifier");
         return "layout";
     }
+
 
     @RequestMapping(value = "/modifier", method = RequestMethod.POST)
     public String modifier(@ModelAttribute EvaluationViewModel model) {

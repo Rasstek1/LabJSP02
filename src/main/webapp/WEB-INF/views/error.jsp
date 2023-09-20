@@ -4,16 +4,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Erreur</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .error {
+            color: red;
+            margin: 20px;
+        }
+        .error h1 {
+            font-size: 1.5em;
+        }
+        .error p {
+            font-size: 1em;
+            margin: 10px 0;
+        }
+    </style>
 </head>
 <body>
-<h1>Attention, une erreur s’est produite dans la ressource demandée. Veuillez contacter le support technique. </h1>
-<h2>Message : ${message}</h2>
-<h2>Date :${timestamp}</h2>
-<h2>Code : ${status}</h2>
+<h1>Attention, une erreur s’est produite dans la ressource demandée. Veuillez contacter le support technique.</h1>
+<p>Status: ${requestScope['javax.servlet.error.status_code']}</p>
+<p>Message: ${requestScope['javax.servlet.error.message']}</p>
 <c:url var="accueilURL" value="/home/accueil"/>
-<hr/> <a href="${accueilURL}"> allez à l'accueil</a>
+<hr/>
+<a href="/LabJSP02/accueil">Accueil">Allez à l'accueil</a>
 
 </body>
 </html>
+
 

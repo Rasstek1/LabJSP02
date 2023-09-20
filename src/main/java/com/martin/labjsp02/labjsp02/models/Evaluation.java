@@ -144,7 +144,7 @@ public class Evaluation {
         evaluationViewModel.setCommentaire(this.commentaire);
         String strDateEvaluation = request.getParameter("dateEvaluation");
 
-        Date dateEvaluation = Evaluation.convertDate(strDateEvaluation); //Apres plusieurs facons de faire, je n'ai pas reussi a faire fonctionner la methode convertDate
+        Date dateEvaluation = Evaluation.convertDate(strDateEvaluation);
 
         Calendar dateEvaluation2 = Calendar.getInstance();
         dateEvaluation2.setTime(dateEvaluation);
