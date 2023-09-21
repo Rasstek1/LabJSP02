@@ -20,11 +20,14 @@ public class Evaluation {
 
     private String commentaire;
 
+    private String photoPath;
+
+
 
     public Evaluation() {
     }
 
-    public Evaluation(int numero, String nom, String prenom, String telephone, String courriel, char sexe, String note, Calendar dateEvaluation, String commentaire) {
+    public Evaluation(int numero, String nom, String prenom, String telephone, String courriel, char sexe, String note, Calendar dateEvaluation, String commentaire, String photoPath) {
         this.numero = numero;
         this.nom = nom;
         this.prenom = prenom;
@@ -34,9 +37,21 @@ public class Evaluation {
         this.note = note;
         this.dateEvaluation = dateEvaluation;
         this.commentaire = commentaire;
+        this.photoPath = photoPath;
 
     }
 
+    @Override
+    public String toString() {
+        return "Evaluation{" +
+                "numero=" + numero +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", sexe='" + sexe + '\'' +
+                // ... autres champs ...
+                ", photoPath='" + photoPath + '\'' +
+                '}';
+    }
 
     public int getNumero() {
         return numero;
@@ -103,6 +118,13 @@ public class Evaluation {
         this.commentaire = commentaire;
     }
 
+    public String getPhotoPath() {
+        return photoPath;
+    }
+
+    public void setPhotoPath(String photoPath) {
+        this.photoPath = photoPath;
+    }
 
     public Calendar getDateEvaluation() {
         return dateEvaluation;
@@ -135,6 +157,7 @@ public class Evaluation {
         evaluationViewModel.setNote(this.note);
         evaluationViewModel.setCommentaire(this.commentaire);
         evaluationViewModel.setDateEvaluation(this.convertCalendarToString(this.dateEvaluation));
+        evaluationViewModel.setPhotoPath(this.photoPath);
 
 
         return evaluationViewModel;

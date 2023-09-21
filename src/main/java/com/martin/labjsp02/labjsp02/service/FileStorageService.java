@@ -1,16 +1,14 @@
 package com.martin.labjsp02.labjsp02.service;
 
-import org.springframework.core.io.UrlResource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.core.io.Resource;
-
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 
 @Service
@@ -18,37 +16,51 @@ public class FileStorageService {
 
     private final Path fileStorageLocation = Paths.get("src/main/resources/static/uploads/").toAbsolutePath().normalize();
 
-    public String storeFile(MultipartFile file) {
+
+
+    public FileStorageService() {
+
         try {
-            if (file.isEmpty()) {
-                throw new Exception("Failed to store empty file.");
-            }
-
-            // Créer le répertoire s'il n'existe pas
-            Files.createDirectories(fileStorageLocation);
-
-            // Copier le fichier dans le répertoire de stockage
-            Path targetLocation = fileStorageLocation.resolve(file.getOriginalFilename());
-            Files.copy(file.getInputStream(), targetLocation);
-
-            return targetLocation.toString();
+            Files.createDirectories(this.fileStorageLocation);
         } catch (Exception ex) {
-            throw new RuntimeException("Could not store file. Please try again.", ex);
+            throw new FileStorageException("Could not create the directory where the uploaded files will be stored.", ex);
         }
     }
 
-    // Méthode pour charger un fichier (non implémentée dans cet exemple)
-    public Resource loadFileAsResource(String fileName) throws IOException {
+    public String storeFile(MultipartFile file) {
+        // Normalize file name
+        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+
         try {
-            Path filePath = fileStorageLocation.resolve(fileName).normalize();
-            Resource resource = new UrlResource(filePath.toUri());
-            if (resource.exists()) {
-                return resource;
-            } else {
-                throw new IOException("File not found " + fileName);
+            // Vérifiez si le nom du fichier contient des caractères invalides
+            if (fileName.contains("..")) {
+                throw new FileStorageException("Désolé! Le nom du fichier contient une séquence de chemin invalide " + fileName);
             }
-        } catch (MalformedURLException ex) {
-            throw new IOException("File not found " + fileName, ex);
+
+            // Copiez le fichier à l'emplacement cible (en remplaçant le fichier existant avec le même nom)
+            Path targetLocation = this.fileStorageLocation.resolve(fileName);
+            Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
+
+            // Construisez le chemin correct ici
+            // Notez que nous ajoutons simplement le nom du fichier au chemin d'accès du dossier de téléchargement
+            String fileDownloadUri = "/uploads/" + fileName;
+
+            return fileDownloadUri;
+        } catch (IOException ex) {
+            throw new FileStorageException("Impossible de stocker le fichier " + fileName + ". Veuillez réessayer!", ex);
+        }
+
+    }
+
+
+    public class FileStorageException extends RuntimeException {
+        public FileStorageException(String message) {
+            super(message);
+        }
+
+        public FileStorageException(String message, Throwable cause) {
+            super(message, cause);
         }
     }
+
 }

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 
 @Controller
@@ -34,12 +35,32 @@ public class EvaluationController {
         return "layout";
     }
 
+    //Methode ajouter avec verification du numero entrer qui est unique et implement la fonction getUniqueNumero dans EvaluationDataContext.java
+    @RequestMapping(value = "/ajouter", method = RequestMethod.POST)
+    public String ajouter(@ModelAttribute EvaluationViewModel model, @RequestParam("photo") MultipartFile photo) {
+        Evaluation eval = model.Mapper();
+        int uniqueNumero = evaluationDataContext.getUniqueNumero();
+        eval.setNumero(uniqueNumero);
+
+        // Stockez le fichier et obtenez le chemin
+        String photoPath = fileStorageService.storeFile(photo);
+        System.out.println("Photo path: " + photoPath);
+        eval.setPhotoPath(photoPath);
+
+        evaluationDataContext.Ajouter(eval);
+        System.out.println(eval);
+        return "redirect:/Evaluation/liste";
+    }
+
+
+        /*
+    //Methode ajouter sans verification du numero entrer
     @RequestMapping(value = "/ajouter", method = RequestMethod.POST)
     public String ajouter(@ModelAttribute EvaluationViewModel model) {
         Evaluation eval = model.Mapper();
         evaluationDataContext.Ajouter(eval);
         return "redirect:/Evaluation/liste";
-    }
+    }*/
 
     @RequestMapping(value = "/supprimer/{numero}", method = RequestMethod.GET)
     public String supprimer(@PathVariable int numero) {
@@ -76,6 +97,11 @@ public class EvaluationController {
     }*/
 
 }
+
+
+
+
+
 
 
 

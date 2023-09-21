@@ -4,10 +4,10 @@
 <div class="container">
     <h3>Ajouter une évaluation</h3>
     <div class="col-12 col-md-6 col-lg-4 mx-auto border  border-white p-4 boite-blurry">
-        <form action="${pageContext.request.contextPath}/Evaluation/ajouter" method="POST">
+        <form action="${pageContext.request.contextPath}/Evaluation/ajouter" method="POST" action="src/main/resources/static/uploads/" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="numero" class="form-label">Numéro</label>
-                <input type="text" class="form-control" id="numero" name="numero"required>
+                <input type="text" class="form-control" id="numero" name="numero" required>
             </div>
             <div class="mb-3">
                 <label for="nom" class="form-label">Nom</label>
@@ -15,7 +15,7 @@
             </div>
             <div class="mb-3">
                 <label for="prenom" class="form-label">Prénom</label>
-                <input type="text" class="form-control" id="prenom" name="prenom"required>
+                <input type="text" class="form-control" id="prenom" name="prenom" required>
             </div>
             <div class="mb-3">
                 <label for="telephone" class="form-label">Téléphone</label>
@@ -27,7 +27,7 @@
             </div>
             <div class="mb-3">
                 <label for="dateEvaluation" class="form-label">Date d’évaluation</label>
-                <input type="date" class="form-control" id="dateEvaluation" name="dateEvaluation" >
+                <input type="date" class="form-control" id="dateEvaluation" name="dateEvaluation">
             </div>
             <div class="mb-3">
                 <label class="form-label">Sexe</label>
@@ -55,6 +55,10 @@
                 <label for="commentaire" class="form-label">Commentaires</label>
                 <textarea class="form-control" id="commentaire" name="commentaire" required></textarea>
             </div>
+            <div class="pb-3 text-white">
+                <input type="file" name="photo" id="photo"/>
+            </div>
+
             <button type="submit" class="btn btn-primary">Envoyer</button>
             <button type="reset" class="btn btn-secondary">Annuler</button>
         </form>

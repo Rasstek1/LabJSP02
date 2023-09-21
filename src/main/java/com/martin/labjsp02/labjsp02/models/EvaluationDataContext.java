@@ -1,9 +1,10 @@
 package com.martin.labjsp02.labjsp02.models;
 import org.springframework.stereotype.Service;
-
+import java.util.stream.Collectors;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 @Service
 public class EvaluationDataContext implements IEvaluationContext {
 
@@ -47,6 +48,20 @@ public class EvaluationDataContext implements IEvaluationContext {
     public void Ajouter(Evaluation element) {
         listeEvaluations.add(element);
     }
+
+//Verification du numero entrer et le change pour le prochain numero disponible
+    public int getUniqueNumero() {
+        Set<Integer> existingNumbers = listeEvaluations.stream()
+                .map(Evaluation::getNumero)
+                .collect(Collectors.toSet());
+
+        int proposedNumero = 1;
+        while (existingNumbers.contains(proposedNumero)) {
+            proposedNumero++;
+        }
+        return proposedNumero;
+    }
+
 
     @Override
     public void Supprimer(int numero) {

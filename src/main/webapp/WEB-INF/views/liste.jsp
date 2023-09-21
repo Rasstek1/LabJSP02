@@ -25,7 +25,13 @@
                 <c:forEach var="eval" items="${evaluations}">
                     <div class="col">
                         <div class="boite-blurry">
-                            <img src="${pageContext.request.contextPath}/img/${eval.sexe.toString() == 'm' ? 'men.png' : 'girl.png'}" alt="Photo du profil" class="logo-img"/>
+
+                            <img src="${pageContext.request.contextPath}/uploads/${eval.photoPath}" alt="Photo de profil" class="img-profil" />
+
+
+
+
+                            <!--<img src="${pageContext.request.contextPath}/img/${eval.sexe.toString() == 'm' ? 'men.png' : 'girl.png'}" alt="Photo du profil" class="logo-img"/>-->
                             <div class="card-body">
                                 <h4 class="card-title">${eval.prenom} ${eval.nom}</h4>
                                 <p class="card-text">

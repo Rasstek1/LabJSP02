@@ -20,11 +20,13 @@ public class EvaluationViewModel {
     private String dateEvaluation;
     private String commentaire;
 
+    private String photoPath;
+
 
     public EvaluationViewModel() {
     }
 
-    public EvaluationViewModel(int numero, String nom, String prenom, String telephone, String courriel, char sexe, String note, String dateEvaluation, String commentaire) {
+    public EvaluationViewModel(int numero, String nom, String prenom, String telephone, String courriel, char sexe, String note, String dateEvaluation, String commentaire, String photoPath) {
         this.numero = numero;
         this.nom = nom;
         this.prenom = prenom;
@@ -34,6 +36,7 @@ public class EvaluationViewModel {
         this.note = note;
         this.dateEvaluation = dateEvaluation;
         this.commentaire = commentaire;
+        this.photoPath = photoPath;
 
     }
 
@@ -103,6 +106,14 @@ public class EvaluationViewModel {
         this.commentaire = commentaire;
     }
 
+    public String getPhotoPath() {
+        return photoPath;
+    }
+
+    public void setPhotoPath(String photoPath) {
+        this.photoPath = photoPath;
+    }
+
 
     public String getDateEvaluation() {
         return dateEvaluation;
@@ -136,6 +147,7 @@ public class EvaluationViewModel {
             evaluation.setSexe(this.sexe);
             evaluation.setNote(this.note);
             evaluation.setCommentaire(this.commentaire);
+            evaluation.setPhotoPath(this.photoPath);
 
             evaluation.setDateEvaluation(this.convertStringToCalendar());
 

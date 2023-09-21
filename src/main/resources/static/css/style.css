@@ -122,6 +122,13 @@ footer {
     width: 100px;  /* Ajustez la valeur comme nécessaire */
     height: auto;  /* Maintient le ratio d'aspect */
 }
+.img-profil {
+    max-width: 150px;
+    max-height: 150px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
 
 
 
