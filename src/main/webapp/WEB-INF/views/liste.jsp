@@ -31,6 +31,8 @@
 
 
 
+
+
                             <!--<img src="${pageContext.request.contextPath}/img/${eval.sexe.toString() == 'm' ? 'men.png' : 'girl.png'}" alt="Photo du profil" class="logo-img"/>-->
                             <div class="card-body">
                                 <h4 class="card-title">${eval.prenom} ${eval.nom}</h4>
